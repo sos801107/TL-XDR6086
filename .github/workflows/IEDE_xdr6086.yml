@@ -110,19 +110,3 @@ jobs:
         path: openwrt/bin/packages
 
 
-       - name: Generate Tag & Release Name
-      id: generate_name
-      run: |
-        time=$(date +%Y%m%d%H%M%S)
-        release_tag="$time"
-        release_name="LEDE-TP-link-xdr6086-6.1内核-$(date +%Y%m%d)"
-        echo "release_name=$release_name" >> $GITHUB_OUTPUT
-        echo "release_tag=$release_tag" >> $GITHUB_OUTPUT      
-
-    - name: Create Release & Upload
-      uses: ncipollo/release-action@v1.14.0
-      with:
-        artifacts: ARM_Out/*.bin
-        name: ${{ steps.generate_name.outputs.release_name }}
-        tag: ${{ steps.generate_name.outputs.release_tag }}
-        token: ${{ secrets.GITHUB_TOKEN }}
