@@ -65,7 +65,7 @@ sed -i "3iuci commit istore" package/lean/default-settings/files/zzz-default-set
 sed -i "s/hostname='.*'/hostname='OpenWrt'/g" package/base-files/files/bin/config_generate
 
 ##WiFi
-sed -i "s/OpenWrt/LEDE/g" package/kernel/mac80211/files/lib/wifi/mac80211.sh
+sed -i "s/OpenWrt/LEAE/g" package/kernel/mac80211/files/lib/wifi/mac80211.sh
 ##sed -i "s/LEDE/AE86/g" package/kernel/mac80211/files/lib/wifi/mac80211.sh
 
 sed -i "s/encryption=.*/encryption=sae-mixed\nset wireless.default_radio\${devidx}.key=Routes.Live/g" package/kernel/mac80211/files/lib/wifi/mac80211.sh
