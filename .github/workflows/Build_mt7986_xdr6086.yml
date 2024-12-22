@@ -13,7 +13,7 @@ on:
 #    types: [started]
 
 jobs:
-  Build_mt7986_ax6000:
+  Build_mt7986_xdr6086:
     runs-on: ubuntu-20.04
     steps:
     - name: Clone Repository
