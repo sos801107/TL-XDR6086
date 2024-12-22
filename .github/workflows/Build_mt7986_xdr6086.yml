@@ -59,7 +59,7 @@ jobs:
         cp -f ../diy/mt798x/op2.sh ./        
         chmod +x ./op2.sh && ./op2.sh      
 
-        sed -i "s/DISTRIB_DESCRIPTION='*.*'/DISTRIB_DESCRIPTION='AE86Wrt-Redmi-xdr6086-$(date +%Y%m%d)'/g"  package/base-files/files/etc/openwrt_release
+        sed -i "s/DISTRIB_DESCRIPTION='*.*'/DISTRIB_DESCRIPTION='TP-Link_TL-xdr6086-$(date +%Y%m%d)'/g"  package/base-files/files/etc/openwrt_release
               
     - name: Configuration Customization - Build_mt7986_xdr6086
       env:
