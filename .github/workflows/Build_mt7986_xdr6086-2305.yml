@@ -1,4 +1,4 @@
-name: x_xdr6086
+name: x_xdr6086-2305
 
 on: 
   repository_dispatch:
@@ -13,7 +13,7 @@ on:
 #    types: [started]
 
 jobs:
-  x_xdr6086:
+  x_xdr6086-2305:
     runs-on: ubuntu-20.04
     steps:
     - name: Clone Repository
