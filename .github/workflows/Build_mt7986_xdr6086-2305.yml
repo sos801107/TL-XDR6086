@@ -1,4 +1,4 @@
-name: Build_mt7986_xdr6086
+name: Build_mt7986_xdr6086-2305
 
 on: 
   repository_dispatch:
@@ -13,7 +13,7 @@ on:
 #    types: [started]
 
 jobs:
-  Build_mt7986_xdr6086:
+  Build_mt7986_xdr6086-2305:
     runs-on: ubuntu-20.04
     steps:
     - name: Clone Repository
