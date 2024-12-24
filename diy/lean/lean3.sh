@@ -55,7 +55,7 @@ sed -i 's/luci-theme-bootstrap/luci-theme-design/g' feeds/luci/collections/luci-
 
 ##加入作者信息
 #sed -i "s/DISTRIB_DESCRIPTION='*.*'/DISTRIB_DESCRIPTION='OpenWrt-LEDN'/g" package/lean/default-settings/files/zzz-default-settings   
-#sed -i "s/DISTRIB_REVISION='*.*'/DISTRIB_REVISION=' $(date +%Y%m%d)'/g" package/lean/default-settings/files/zzz-default-settings
+sed -i "s/DISTRIB_REVISION='*.*'/DISTRIB_REVISION=' $(date +%Y%m%d)'/g" package/lean/default-settings/files/zzz-default-settings
 #cp -af feeds/extraipk/patch/diy/banner package/base-files/files/etc/banner
 
 sed -i "2iuci set istore.istore.channel='ae86_daodao'" package/lean/default-settings/files/zzz-default-settings
@@ -65,7 +65,7 @@ sed -i "3iuci commit istore" package/lean/default-settings/files/zzz-default-set
 sed -i "s/hostname='.*'/hostname='TL-XDR6086'/g" package/base-files/files/bin/config_generate
 
 ##WiFi
-sed -i "s/OpenWrt/LEAE/g" package/kernel/mac80211/files/lib/wifi/mac80211.sh
+sed -i "s/OpenWrt/LEDE/g" package/kernel/mac80211/files/lib/wifi/mac80211.sh
 #sed -i "s/LEDE/AE86/g" package/kernel/mac80211/files/lib/wifi/mac80211.sh
 #sed -i "s/encryption=.*/encryption=sae-mixed\nset wireless.default_radio\${devidx}.key=Routes.Live/g" package/kernel/mac80211/files/lib/wifi/mac80211.sh
 
