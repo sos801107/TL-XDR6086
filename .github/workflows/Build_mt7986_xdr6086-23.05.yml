@@ -63,9 +63,9 @@ jobs:
 
         sed -i "s/DISTRIB_DESCRIPTION='*.*'/DISTRIB_DESCRIPTION='TP-Link_TL-xdr6086-$(date +%Y%m%d)'/g"  package/base-files/files/etc/openwrt_release
               
-    - name: Configuration Customization - Build_mt7986_xdr6086-23.05
+    - name: Configuration Customization - Build_mt7986_xdr6086-2305
       env:
-        CONFIG_FILE: './configs/ARM/mt798x/mt7986_xdr6086-23.05.config'
+        CONFIG_FILE: './configs/ARM/mt798x/mt7986_xdr6086-2305.config'
       run: |
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
         cd openwrt && make defconfig
@@ -87,7 +87,7 @@ jobs:
       run: |
         rm -rf ./ARM_Out
         mkdir -p ./ARM_Out/
-        cp -a ./openwrt/.config ./ARM_Out/mt7986_xdr6086-23.05.config
+        cp -a ./openwrt/.config ./ARM_Out/mt7986_xdr6086-2305.config
         
         getmd5()
         {
