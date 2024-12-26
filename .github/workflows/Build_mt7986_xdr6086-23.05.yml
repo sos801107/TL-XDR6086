@@ -1,4 +1,4 @@
-name: Build_mt7986_xdr6086-23.05
+name: Build_mt7986_xdr6086-2305
 
 on: 
   repository_dispatch:
@@ -14,7 +14,7 @@ on:
 #    types: [started]
 
 jobs:
-  Build_mt7986_xdr6086-23.05:
+  Build_mt7986_xdr6086-2305:
     runs-on: ubuntu-20.04
     steps:
     - name: Clone Repository
@@ -42,8 +42,8 @@ jobs:
         
     - name: Clone source code
       env: 
-  REPO_URL: https://github.com/padavanonly/immortalwrt-mt798x-23.05
-  #REPO_BRANCH: openwrt-23.05
+        REPO_URL: https://github.com/padavanonly/immortalwrt-mt798x-23.05
+        REPO_BRANCH: openwrt-23.05
 	#FEEDS_CONF: feeds.conf.default
       run: |
         git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
