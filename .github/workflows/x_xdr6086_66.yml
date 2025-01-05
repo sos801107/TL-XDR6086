@@ -56,8 +56,8 @@ jobs:
 
         ./scripts/feeds install -a
 
-        cp -f ../diy/lean/lean2.sh ./        
-        chmod +x ./lean2.sh && ./lean2.sh
+        cp -f ../diy/lean/lean4.sh ./        
+        chmod +x ./lean4.sh && ./lean4.sh
         
         
         ## 强制默认r2s/r4s/r5s编译内核为6.6  
