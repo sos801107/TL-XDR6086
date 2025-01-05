@@ -3,9 +3,7 @@ name: x_xdr6086_66
 on: 
   repository_dispatch:
   workflow_dispatch:
-env:
-  TZ: Asia/Shanghai
-  
+
 # 定时触发编译
   schedule:
     - cron: 36 21 * * 4
@@ -24,6 +22,7 @@ jobs:
     - name: Initialization environment
       env:
         DEBIAN_FRONTEND: noninteractive
+        TZ: Asia/Shanghai
       run: |
         sudo timedatectl set-timezone "Asia/Shanghai" 
         sudo -E swapoff -a
