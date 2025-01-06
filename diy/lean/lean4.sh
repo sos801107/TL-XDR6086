@@ -51,11 +51,11 @@ sed -i "3iuci commit istore" package/lean/default-settings/files/zzz-default-set
 
 
 ##更改主机名
-sed -i "s/hostname='.*'/hostname='LEDE'/g" package/base-files/files/bin/config_generate
-sed -i "s/hostname='.*'/hostname='LEDE'/g" package/base-files/luci2/bin/config_generate
+sed -i "s/hostname='.*'/hostname='OpenWrt'/g" package/base-files/files/bin/config_generate
+sed -i "s/hostname='.*'/hostname='OpenWrt'/g" package/base-files/luci2/bin/config_generate
 
 ##WiFi
-sed -i "s/LEDE/LEDE/g" package/kernel/mac80211/files/lib/wifi/mac80211.sh
+sed -i "s/OpenWrt/OpenWrt/g" package/kernel/mac80211/files/lib/wifi/mac80211.sh
 
 ### fix speed
 sed -i "s/speed = <2500>;/speed = <1000>;/g" target/linux/mediatek/dts/mt7622-*.dts
