@@ -44,7 +44,7 @@ sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci-n
 ##加入作者信息
 sed -i "s/DISTRIB_DESCRIPTION='*.*'/DISTRIB_DESCRIPTION='LEDE-$(date +%Y%m%d)'/g" package/lean/default-settings/files/zzz-default-settings   
 sed -i "s/DISTRIB_REVISION='*.*'/DISTRIB_REVISION=' By sos07'/g" package/lean/default-settings/files/zzz-default-settings
-#cp -af feeds/2305ipk/patch/diy/banner  package/base-files/files/etc/banner
+cp -af feeds/2305ipk/patch/diy/banner  package/base-files/files/etc/banner
 
 sed -i "2iuci set istore.istore.channel='ae86_daodao'" package/lean/default-settings/files/zzz-default-settings
 sed -i "3iuci commit istore" package/lean/default-settings/files/zzz-default-settings
@@ -55,7 +55,7 @@ sed -i "s/hostname='.*'/hostname='OpenWrt'/g" package/base-files/files/bin/confi
 sed -i "s/hostname='.*'/hostname='OpenWrt'/g" package/base-files/luci2/bin/config_generate
 
 ##WiFi
-sed -i "s/OpenWrt/OpenWrt/g" package/kernel/mac80211/files/lib/wifi/mac80211.sh
+sed -i "s/LEAD/OpenWrt/g" package/kernel/mac80211/files/lib/wifi/mac80211.sh
 
 ### fix speed
 sed -i "s/speed = <2500>;/speed = <1000>;/g" target/linux/mediatek/dts/mt7622-*.dts
