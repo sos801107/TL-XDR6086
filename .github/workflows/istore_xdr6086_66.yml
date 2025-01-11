@@ -1,4 +1,4 @@
-name: x_xdr6086_66
+name: istore_xdr6086_66
 
 on: 
   repository_dispatch:
@@ -14,7 +14,7 @@ on:
 #    types: [started]
 
 jobs:
-  x_xdr6086_66:
+  istore_xdr6086_66:
     runs-on: ubuntu-20.04
     steps:
     - name: Clone Repository
@@ -68,7 +68,7 @@ jobs:
         sed -i "s/DISTRIB_DESCRIPTION='*.*'/DISTRIB_DESCRIPTION='TL-XDR6086-$(date +%Y%m%d)'/g" package/lean/default-settings/files/zzz-default-settings
        
               
-    - name: Configuration Customization - Custom_xdr6086_66
+    - name: Configuration Customization - Custom_istore_xdr6086_66
       env:
         CONFIG_FILE: './configs/ARM/x/lean_xdr6086_66.config'
       run: |
