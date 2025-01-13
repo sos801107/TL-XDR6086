@@ -7,7 +7,3 @@ rm -rf ./package/lean/k3screenctrl
                
 sed -i "1isrc-git 2305ipk https://github.com/sos801107/2305-ipk\n" feeds.conf.default
 
-#sed -i "1isrc-git 2305ipk https://github.com/xiangfeidexiaohuo/2305-ipk\n" feeds.conf.default
-#echo -e "\nsrc-git 2305ipk https://github.com/xiangfeidexiaohuo/extra-ipk" >> feeds.conf.default
-sed -i '/luci.git;openwrt-23.05/d' ./feeds.conf.default
-sed -i 's/coolsnowwolf\/luci/coolsnowwolf\/luci.git;openwrt-23.05/g' ./feeds.conf.default
