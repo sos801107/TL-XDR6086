@@ -72,11 +72,11 @@ sed -i "s/speed = <2500>;/speed = <1000>;/g" target/linux/mediatek/dts/mt7623a-*
 
 
 ##
-sed -i '/option Interface/d'  package/network/services/dropbear/files/dropbear.config
+#sed -i '/option Interface/d'  package/network/services/dropbear/files/dropbear.config
 
 ## rockchip
-cp -af feeds/extraipk/patch/rockchip/*  target/linux/rockchip/armv8/base-files/
+#cp -af feeds/extraipk/patch/rockchip/*  target/linux/rockchip/armv8/base-files/
 
 ## golang 为 1.22.x
-rm -rf feeds/packages/lang/golang
-git clone https://github.com/sbwml/packages_lang_golang -b 22.x feeds/packages/lang/golang
+#rm -rf feeds/packages/lang/golang
+#git clone https://github.com/sbwml/packages_lang_golang -b 22.x feeds/packages/lang/golang
