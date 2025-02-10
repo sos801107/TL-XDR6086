@@ -15,7 +15,7 @@ echo -e "msgstr \"控制\"" >> feeds/luci/modules/luci-base/po/zh_Hans/base.po
 #echo -e "msgstr \"魔法网络\"" >> feeds/luci/modules/luci-base/po/zh_Hans/base.po
 
 ##配置IP
-sed -i 's/192\.168\.[0-9]*\.[0-9]*/192.168.2.1/g' package/base-files/files/bin/config_generate
+sed -i 's/192\.168\.[0-9]*\.[0-9]*/192.168.1.1/g' package/base-files/files/bin/config_generate
 
 ##
 rm -rf ./feeds/extraipk/theme/luci-theme-argon-18.06
@@ -46,7 +46,7 @@ sed -i "s/hostname='.*'/hostname='OpenWrt'/g" package/base-files/files/bin/confi
 ##加入作者信息
 sed -i "s/DISTRIB_DESCRIPTION='*.*'/DISTRIB_DESCRIPTION='OpenWrt-$(date +%Y%m%d)'/g"  package/base-files/files/etc/openwrt_release
 sed -i "s/DISTRIB_REVISION='*.*'/DISTRIB_REVISION=' By sos07'/g" package/base-files/files/etc/openwrt_release
-cp -af feeds/extraipk/patch/diy/banner  package/base-files/files/etc/banner
+#cp -af feeds/extraipk/patch/diy/banner  package/base-files/files/etc/banner
 
 sed -i "2iuci set istore.istore.channel='ae86_daodao'" package/emortal/default-settings/files/99-default-settings
 sed -i "3iuci commit istore" package/emortal/default-settings/files/99-default-settings
