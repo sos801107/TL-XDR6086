@@ -1,0 +1,49 @@
+name: Delete Old Items
+
+on:
+  repository_dispatch:
+  workflow_dispatch:
+  schedule:
+    # Führe den Workflow einmal wöchentlich aus
+    - cron: '0 0 * * 0'
+
+jobs:
+  maintenance:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Delete Old Releases
+        uses: dev-drprasad/delete-older-releases@v0.3.4 # Prüfe, ob es eine neuere Version gibt
+        with:
+          keep_latest: 8
+          delete_expired_data: 30
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Delete workflow runs older than 15 days
+        uses: Mattraks/delete-workflow-runs@v2 # Prüfe, ob es eine neuere Version gibt
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.repository }}
+          retain_days: 30
+          keep_minimum_runs: 5
+          
+      - name: Delete cancelled, failed, or skipped workflow runs older than 1 day
+        uses: Mattraks/delete-workflow-runs@v2 # Prüfe, ob es eine neuere Version gibt
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          delete_run_by_conclusion_pattern: cancelled, failure, skipped
+          repository: ${{ github.repository }}
+          retain_days: 1
+          keep_minimum_runs: 0
+
+      - name: Delete unused Tags
+        uses: fabriziocacicia/delete-tags-without-release-action@main # Prüfe, ob es eine neuere Version gibt
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # passe den Status an
+      - name: Set Workflow Status to Error
+        run: exit 1
