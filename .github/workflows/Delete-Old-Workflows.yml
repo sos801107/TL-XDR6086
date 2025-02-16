@@ -1,29 +1,49 @@
-name: Delete-Old-Workflows
+name: Delete Old Items
 
-on: 
+on:
   repository_dispatch:
   workflow_dispatch:
-
-# 定时触发编译
   schedule:
-    - cron: 0 0 * * 0
+    # Führe den Workflow einmal wöchentlich aus
+    - cron: '0 0 * * 0'
 
 jobs:
-  Delete-Old-Workflows:
-    runs-on: ubuntu-20.04
+  maintenance:
+    runs-on: ubuntu-latest
     steps:
-    - name: Clone Repository
-      uses: actions/checkout@v4
+      - name: Checkout Repository
+        uses: actions/checkout@v2
 
-    - name: Set git
-      run : |
-        git config --global user.email "github-actions[bot]@users.noreply.github.com"
-        git config --global user.name "github-actions[bot]"
-        sudo timedatectl set-timezone "Asia/Shanghai"
+      - name: Delete Old Releases
+        uses: dev-drprasad/delete-older-releases@v0.3.4 # Prüfe, ob es eine neuere Version gibt
+        with:
+          keep_latest: 8
+          delete_expired_data: 30
+        env:
+          GITHUB_TOKEN: ${{ secrets.LEO_TOKEN }}
+      
+      - name: Delete workflow runs older than 15 days
+        uses: Mattraks/delete-workflow-runs@v2 # Prüfe, ob es eine neuere Version gibt
+        with:
+          token: ${{ secrets.LEO_TOKEN }}
+          repository: ${{ github.repository }}
+          retain_days: 30
+          keep_minimum_runs: 5
+          
+      - name: Delete cancelled, failed, or skipped workflow runs older than 1 day
+        uses: Mattraks/delete-workflow-runs@v2 # Prüfe, ob es eine neuere Version gibt
+        with:
+          token: ${{ secrets.LEO_TOKEN }}
+          delete_run_by_conclusion_pattern: cancelled, failure, skipped
+          repository: ${{ github.repository }}
+          retain_days: 1
+          keep_minimum_runs: 0
 
-    - name: Delete workflow runs
-      uses: Mattraks/delete-workflow-runs@main
-      continue-on-error: true
-      with:
-        retain_days: 3
-        keep_minimum_runs: 0
+      - name: Delete unused Tags
+        uses: fabriziocacicia/delete-tags-without-release-action@main # Prüfe, ob es eine neuere Version gibt
+        env:
+          GITHUB_TOKEN: ${{ secrets.LEO_TOKEN }}
+
+      # passe den Status an
+      - name: Set Workflow Status to Error
+        run: exit 1
